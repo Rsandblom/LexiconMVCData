@@ -27,7 +27,10 @@ namespace LexiconMVCData.Controllers
             peopleVM.SortByCity = pVM.SortOrder == "city" ? "city_desc" : "city";
 
             if (!String.IsNullOrEmpty(pVM.SearchString))
-                peopleVM.PeopleList = peopleVM.PeopleList.Where(c => c.City!.Contains(pVM.SearchString)).ToList();
+            {
+                peopleVM.PeopleList = peopleVM.PeopleList.Where(c => c.City!.Contains(pVM.SearchString) || c.Name!.Contains(pVM.SearchString)).ToList();
+
+            }
 
             switch (pVM.SortOrder)
             {
