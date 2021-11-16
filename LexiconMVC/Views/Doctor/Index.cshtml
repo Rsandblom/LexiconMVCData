@@ -1,0 +1,32 @@
+﻿@model LexiconMVC.Models.Temperature
+
+@{
+    ViewData["Title"] = "Fever Check";
+}
+
+<h1>Temperature Check</h1>
+
+@if (ViewBag.Msg != null)
+{
+    <h2>Result from temp check: @ViewBag.Msg</h2>
+}
+
+
+<div>
+    <form asp-action="Index" method="post">
+        <div>
+            <input asp-for="IsCelsius" checked="checked" value="true" type="radio" /> Celsius
+            <input asp-for="IsCelsius" value="false" type="radio" /> Fahrenheit
+        </div>
+        <div>
+            <label asp-for="CurrentTemp"></label>
+            <input asp-for="CurrentTemp" />
+        </div>
+        <div>
+            <input type="submit" value="Check temp" />
+        </div>
+    </form>
+</div>
+
+
+

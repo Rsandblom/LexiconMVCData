@@ -1,0 +1,106 @@
+﻿@model LexiconMVCData.ViewModels.PeopleViewModel
+
+@{
+    ViewData["Title"] = "People";
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<partial name="_ValidationScriptsPartial" />
+
+<h1>People</h1>
+
+<h2>Search</h2>
+<div>
+    <form asp-action="Index" method="get">
+        <div>
+            <label asp-for="SearchString"></label>
+            <input asp-for="SearchString" />
+        </div>
+        <div>
+            <input type="submit" value="Filter by city" />
+        </div>
+    </form>
+</div>
+
+
+<br />
+<br />
+<h2>Create new Person</h2>
+
+<div>
+    <form asp-action="Create" method="post">
+        <div>
+            <label asp-for="CreatePerson.Name"></label>
+            <input asp-for="CreatePerson.Name" />
+            <span asp-validation-for="CreatePerson.Name"></span>
+        </div>
+        <div>
+            <label asp-for="CreatePerson.PhoneNumber"></label>
+            <input asp-for="CreatePerson.PhoneNumber" />
+            <span asp-validation-for="CreatePerson.PhoneNumber"></span>
+        </div>
+        <div>
+            <label asp-for="CreatePerson.City"></label>
+            <input asp-for="CreatePerson.City" />
+            <span asp-validation-for="CreatePerson.City"></span>
+        </div>
+        <div>
+            <input type="submit" value="Add Person" />
+        </div>
+    </form>
+</div>
+
+<br />
+<br />
+<h2>People List</h2>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@Model.SortByName">@Html.DisplayNameFor(model => model.SortByName)</a>
+                </th>
+                <th>
+                    Phone-number
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@Model.SortByCity">@Html.DisplayNameFor(model => model.SortByCity)</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PeopleList)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.PhoneNumber
+                    </td>
+                    <td>
+                        @item.City
+                    </td>
+                    <td>
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" asp-for="@item.Id" />
+                            <input type="submit" value="Delete" asp-action="Delete" asp-route-id="@item.Id" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+

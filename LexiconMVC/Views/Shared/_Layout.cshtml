@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <img src="/images/pagelogo.png" alt="page logo" width="200" height="100" asp-append-version="true">
+        <nav>
+            <ul class="nav navbar-nav">
+                <li><a asp-controller="Home" asp-action="Index">Index</a></li>
+                <li><a asp-controller="Home" asp-action="About">About</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-controller="Home" asp-action="Projects">Projects</a></li>
+                <li><a asp-controller="People" asp-action="Index">People</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>@DateTime.Now.ToShortDateString()</footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

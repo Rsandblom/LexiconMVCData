@@ -1,0 +1,19 @@
+﻿@model IEnumerable<LexiconMVC.Models.LexProject>
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<h1>Projects</h1>
+
+
+@foreach (var proj in Model)
+{
+    <div>
+        <h2>@proj.ProjectName</h2>
+        <a href="@proj.ProjectLink">@proj.ProjectLink</a>
+        <p>@proj.ProjectDescription</p>
+    </div>
+}
+
+
+
