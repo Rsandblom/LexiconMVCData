@@ -11,6 +11,7 @@ namespace LexiconMVCData.ViewModels
     {
         public CreatePersonViewModel CreatePerson { get; set; }
         public List<Person> PeopleList { get; set; }
+        [Display(Name ="Search")]
         public string SearchString { get; set; }
 
         public string SortOrder { get; set; }

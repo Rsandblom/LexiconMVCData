@@ -10,97 +10,71 @@
 
 <partial name="_ValidationScriptsPartial" />
 
+<hr class="mt-5">
 <h1>People</h1>
 
-<h2>Search</h2>
-<div>
-    <form asp-action="Index" method="get">
-        <div>
-            <label asp-for="SearchString"></label>
-            <input asp-for="SearchString" />
-        </div>
-        <div>
-            <input type="submit" value="Filter" />
-        </div>
-    </form>
+<br />
+
+<div class="m-3 w-25">
+    <h2>Search</h2>
+    <div>
+        <form class="form-inline" asp-action="Index" method="get">
+            <div class="input-group mb-2 mr-sm-2">
+                <!--<label asp-for="SearchString" class="mr-sm-2"></label>-->
+                <input asp-for="SearchString" class="form-control" />
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary mb-2 mr-sm-2" value="Filter" />
+            </div>
+        </form>
+    </div>
 </div>
 
+<hr class="mt-5">
 
-<br />
-<br />
-<h2>Create new Person</h2>
-
-<div>
-    <form asp-action="Create" method="post">
-        <div>
+<div class="m-3 w-25">
+    <h2>Create new Person</h2>
+    <form class="form" asp-action="Create" method="post">
+        <div class="form-group">
             <label asp-for="CreatePerson.Name"></label>
-            <input asp-for="CreatePerson.Name" />
+            <input asp-for="CreatePerson.Name" class="form-control" />
             <span asp-validation-for="CreatePerson.Name"></span>
         </div>
-        <div>
+        <div class="form-group">
             <label asp-for="CreatePerson.PhoneNumber"></label>
-            <input asp-for="CreatePerson.PhoneNumber" />
+            <input asp-for="CreatePerson.PhoneNumber" class="form-control" />
             <span asp-validation-for="CreatePerson.PhoneNumber"></span>
         </div>
-        <div>
+        <div class="form-group">
             <label asp-for="CreatePerson.City"></label>
-            <input asp-for="CreatePerson.City" />
+            <input asp-for="CreatePerson.City" class="form-control" />
             <span asp-validation-for="CreatePerson.City"></span>
         </div>
         <div>
-            <input type="submit" value="Add Person" />
+            <input type="submit" value="Add Person" class="btn btn-primary mb-2 mr-sm-2"/>
         </div>
     </form>
 </div>
 
-<br />
-<br />
-<h2>People List</h2>
-<div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    <a asp-action="Index" asp-route-sortOrder="@Model.SortByName">@Html.DisplayNameFor(model => model.SortByName)</a>
-                </th>
-                <th>
-                    Phone-number
-                </th>
-                <th>
-                    <a asp-action="Index" asp-route-sortOrder="@Model.SortByCity">@Html.DisplayNameFor(model => model.SortByCity)</a>
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.PeopleList)
-            {
-                <tr>
-                    <td>
-                        @item.Id
-                    </td>
-                    <td>
-                        @item.Name
-                    </td>
-                    <td>
-                        @item.PhoneNumber
-                    </td>
-                    <td>
-                        @item.City
-                    </td>
-                    <td>
-                        <form asp-action="Delete" method="post">
-                            <input type="hidden" asp-for="@item.Id" />
-                            <input type="submit" value="Delete" asp-action="Delete" asp-route-id="@item.Id" />
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<hr class="mt-5">
+
+<div class="m-3 w-50">
+    <h2>People List</h2>
+    <div class="container-fluid">
+        <div class="row mb-2 mr-sm-2">
+            <div class="col-1 font-weight-bold">Id</div>
+            <div class="col-3 font-weight-bold"><a asp-action="Index" asp-route-sortOrder="@Model.SortByName">@Html.DisplayNameFor(model => model.SortByName)</a></div>
+            <div class="col-3 font-weight-bold"> Phone-number</div>
+            <div class="col-3 font-weight-bold"><a asp-action="Index" asp-route-sortOrder="@Model.SortByCity">@Html.DisplayNameFor(model => model.SortByCity)</a></div>
+            <div class="col-2"></div>
+        </div>
+        <hr>
+        @foreach (var item in Model.PeopleList)
+        {
+            <partial name="_PersonPartial" for="@item" />
+        }
+    </div>
 </div>
+
 <br />
 
