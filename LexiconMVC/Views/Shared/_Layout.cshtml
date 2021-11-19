@@ -18,6 +18,7 @@
                 <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                 <li><a asp-controller="Home" asp-action="Projects">Projects</a></li>
                 <li><a asp-controller="People" asp-action="Index">People</a></li>
+                <li><a asp-controller="Ajax" asp-action="Index">Ajax</a></li>
             </ul>
         </nav>
     </header>
@@ -25,6 +26,7 @@
         @RenderBody()
     </div>
     <footer>@DateTime.Now.ToShortDateString()</footer>
+    <script src="~/js/PersonScript.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

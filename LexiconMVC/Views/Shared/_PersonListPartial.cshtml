@@ -1,0 +1,21 @@
+﻿@model List<LexiconMVCData.Models.Person>
+
+<div class="container">
+    <div class="">
+        <h2>People List</h2>
+        <div class="container-fluid">
+            <div class="row mb-2 mr-sm-2">
+                <div class="col-1 font-weight-bold">Id</div>
+                <div class="col-3 font-weight-bold">Name</a></div>
+                <div class="col-3 font-weight-bold"> Phone-number</div>
+                <div class="col-3 font-weight-bold">City</a></div>
+                <div class="col-2"></div>
+            </div>
+            <hr>
+            @foreach (var item in Model)
+            {
+                <partial name="_PersonPartial" for="@item" />
+            }
+        </div>
+     </div>
+</div>
